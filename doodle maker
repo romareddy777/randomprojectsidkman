@@ -1,0 +1,74 @@
+How about a program that lets you draw cute shapes on the screen with your mouse? Here's a simple implementation using HTML5 Canvas and JavaScript:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cute Drawing Board</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    canvas {
+        display: block;
+        background-color: #f0f0f0;
+    }
+</style>
+</head>
+<body>
+
+<canvas id="drawCanvas"></canvas>
+
+<script>
+const canvas = document.getElementById('drawCanvas');
+const context = canvas.getContext('2d');
+
+// Set canvas width and height to the window size
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let isDrawing = false;
+let lastX = 0;
+let lastY = 0;
+
+function draw(e) {
+    if (!isDrawing) return;
+    context.strokeStyle = '#ff69b4'; // Cute pink color
+    context.lineWidth = 5;
+    context.lineCap = 'round';
+    
+    context.beginPath();
+    context.moveTo(lastX, lastY);
+    context.lineTo(e.clientX, e.clientY);
+    context.stroke();
+
+    lastX = e.clientX;
+    lastY = e.clientY;
+}
+
+canvas.addEventListener('mousedown', (e) => {
+    isDrawing = true;
+    lastX = e.clientX;
+    lastY = e.clientY;
+});
+
+canvas.addEventListener('mousemove', draw);
+
+canvas.addEventListener('mouseup', () => {
+    isDrawing = false;
+});
+
+canvas.addEventListener('mouseout', () => {
+    isDrawing = false;
+});
+</script>
+
+</body>
+</html>
+```
+
+This code sets up a canvas element that listens for mouse events. When you click and drag the mouse, it draws cute pink lines on the canvas. You can use this to create adorable doodles and shapes!
