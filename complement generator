@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cute Compliment Generator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        background-color: #f44336;
+        color: white;
+        transition: background-color 0.3s;
+    }
+    button:hover {
+        background-color: #c62828;
+    }
+    #compliment {
+        margin-top: 20px;
+        font-size: 20px;
+    }
+</style>
+</head>
+<body>
+
+<h1>Cute Compliment Generator</h1>
+
+<button id="generateButton">Generate Compliment</button>
+<div id="compliment"></div>
+
+<script>
+const compliments = [
+    "You're as sweet as a puppy!",
+    "You're more beautiful than a rainbow.",
+    "You're as charming as a kitten.",
+    "You're as lovely as a spring breeze.",
+    "You're as cute as a button.",
+    "You light up the room like a firefly.",
+    "You're as precious as a baby panda.",
+    "You're as graceful as a butterfly.",
+    "You're as adorable as a baby duckling.",
+    "You're as bright as a shooting star."
+];
+
+const complimentElement = document.getElementById('compliment');
+const generateButton = document.getElementById('generateButton');
+
+generateButton.addEventListener('click', () => {
+    const randomIndex = Math.floor(Math.random() * compliments.length);
+    const randomCompliment = compliments[randomIndex];
+    complimentElement.textContent = randomCompliment;
+});
+</script>
+
+</body>
+</html>
