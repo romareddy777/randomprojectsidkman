@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virtual Pet</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+    }
+    #pet {
+        width: 200px;
+        height: 200px;
+        background-image: url('https://emojicdn.elk.sh/🐶');
+        background-size: cover;
+        background-repeat: no-repeat;
+        cursor: pointer;
+    }
+    #happiness {
+        font-size: 20px;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+
+<h1>Virtual Pet</h1>
+
+<div id="pet"></div>
+<div id="happiness">Happiness: <span id="happinessValue">50</span></div>
+
+<script>
+let happiness = 50; // Initial happiness level
+
+const petElement = document.getElementById('pet');
+const happinessValueElement = document.getElementById('happinessValue');
+
+// Function to feed the pet
+function feedPet() {
+    if (happiness < 100) {
+        happiness += 10; // Increase happiness by 10
+        if (happiness > 100) {
+            happiness = 100; // Ensure happiness doesn't exceed 100
+        }
+        updatePet();
+        updateHappiness();
+    }
+}
+
+// Function to update the pet's appearance based on happiness level
+function updatePet() {
+    const happinessPercentage = happiness + '%';
+    petElement.style.backgroundImage = `url('https://emojicdn.elk.sh/🐶?h=${happinessPercentage}')`;
+}
+
+// Function to update the displayed happiness level
+function updateHappiness() {
+    happinessValueElement.textContent = happiness;
+}
+
+// Add event listener to feed the pet when clicked
+petElement.addEventListener('click', feedPet);
+
+// Update initial pet appearance and happiness level
+updatePet();
+updateHappiness();
+</script>
+
+</body>
+</html>
