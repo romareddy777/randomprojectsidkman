@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insult Generator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        background-color: #f44336;
+        color: white;
+        transition: background-color 0.3s;
+    }
+    button:hover {
+        background-color: #c62828;
+    }
+    #insult {
+        margin-top: 20px;
+        font-size: 20px;
+    }
+</style>
+</head>
+<body>
+
+<h1>Insult Generator</h1>
+
+<button id="generateButton">Generate Insult</button>
+<div id="insult"></div>
+
+<script>
+const insults = [
+    "You're as useless as the 'g' in lasagna.",
+    "You're about as useful as a screen door on a submarine.",
+    "If your brain was dynamite, there wouldn’t be enough to blow your hat off.",
+    "You're not pretty enough to be that dumb.",
+    "If you were any slower, you’d be going backward.",
+    "You're like a dictionary - you add meaning to the word 'dull'.",
+    "You're not the dumbest person in the world, but you better hope they don't die.",
+    "Your face makes onions cry.",
+    "I'd insult you, but nature already did a better job."
+];
+
+const insultElement = document.getElementById('insult');
+const generateButton = document.getElementById('generateButton');
+
+generateButton.addEventListener('click', () => {
+    const randomIndex = Math.floor(Math.random() * insults.length);
+    const randomInsult = insults[randomIndex];
+    insultElement.textContent = randomInsult;
+});
+</script>
+
+</body>
+</html>
